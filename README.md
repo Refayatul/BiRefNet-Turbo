@@ -77,6 +77,18 @@ Evaluated against ground truth test sets across general segmentation (`dis_te1`,
 
 *Statistical Significance*: Paired-bootstrap comparison confirms **zero statistically significant export loss** between INT8 and FP32 on general segmentation tasks (`p > 0.05`, delta ~ 0.0000).
 
+<p align="center">
+  <img src="assets/benchmark_metrics.png" alt="Benchmark Metrics Comparison" width="85%" />
+  <br />
+  <em>Figure 1: Benchmark performance metrics (IoU, BIoU, Sm, MAE) across AIM-500, DIS-TE1, and DIS-VD test sets.</em>
+</p>
+
+<p align="center">
+  <img src="assets/benchmark_samples.png" alt="Benchmark Visual Segmentation Samples" width="95%" />
+  <br />
+  <em>Figure 2: Qualitative segmentation comparison demonstrating INT8 boundary sharpness and fidelity against FP32.</em>
+</p>
+
 ---
 
 ### 📦 Model Releases & Downloads

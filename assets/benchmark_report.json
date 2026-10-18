@@ -1,0 +1,685 @@
+{
+  "onnxruntime": "1.31.0",
+  "torch": "2.11.0+cu128",
+  "eval_mode": "prod",
+  "prod_hw": [
+    1024,
+    576
+  ],
+  "export": {
+    "general": {
+      "static": {
+        "device": "cuda:0",
+        "fold": false
+      },
+      "quant": {
+        "fp32_mb": 1586.3408498764038,
+        "int8_mb": 475.90424633026123,
+        "n_int8_layers": 198,
+        "n_weight_layers": 198,
+        "n_act_act": 96,
+        "per_channel": true
+      },
+      "dynamic": {
+        "device": "cuda:0",
+        "fold": false
+      }
+    },
+    "matting": {
+      "static": {
+        "device": "cuda:0",
+        "fold": false
+      },
+      "quant": {
+        "fp32_mb": 1586.3408498764038,
+        "int8_mb": 475.90424633026123,
+        "n_int8_layers": 198,
+        "n_weight_layers": 198,
+        "n_act_act": 96,
+        "per_channel": true
+      },
+      "dynamic": {
+        "device": "cuda:0",
+        "fold": false
+      }
+    }
+  },
+  "qc": {
+    "general": {
+      "int8_gate": true,
+      "int8_vs_fp32_IoU": 0.9977356182870525,
+      "int8_vs_fp32_MAE": 0.000488695594086424,
+      "static_parity": [
+        {
+          "probe": 0,
+          "H": 1024,
+          "W": 576,
+          "mean_abs": 0.0,
+          "max_abs": 8.1e-05,
+          "IoU": 0.999997,
+          "ok": true
+        },
+        {
+          "probe": 1,
+          "H": 1024,
+          "W": 576,
+          "mean_abs": 0.0,
+          "max_abs": 0.000102,
+          "IoU": 1.0,
+          "ok": true
+        }
+      ],
+      "dynamic_parity": [
+        {
+          "H": 1024,
+          "W": 576,
+          "mean_abs": 0.0,
+          "max_abs": 8.1e-05,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 1280,
+          "W": 704,
+          "mean_abs": 0.0,
+          "max_abs": 0.000163,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 1024,
+          "W": 1024,
+          "mean_abs": 0.0,
+          "max_abs": 9.1e-05,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 768,
+          "W": 512,
+          "mean_abs": 0.0,
+          "max_abs": 0.000141,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 512,
+          "W": 288,
+          "mean_abs": NaN,
+          "max_abs": NaN,
+          "ok": false,
+          "note": "[ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Concat node. N"
+        }
+      ]
+    },
+    "matting": {
+      "int8_gate": false,
+      "int8_vs_fp32_IoU": 0.9577985213495057,
+      "int8_vs_fp32_MAE": 0.010126142504633071,
+      "static_parity": [
+        {
+          "probe": 0,
+          "H": 1024,
+          "W": 576,
+          "mean_abs": 3e-06,
+          "max_abs": 7e-05,
+          "IoU": 0.999988,
+          "ok": true
+        },
+        {
+          "probe": 1,
+          "H": 1024,
+          "W": 576,
+          "mean_abs": 0.0,
+          "max_abs": 2.9e-05,
+          "IoU": 1.0,
+          "ok": true
+        }
+      ],
+      "dynamic_parity": [
+        {
+          "H": 1024,
+          "W": 576,
+          "mean_abs": 3e-06,
+          "max_abs": 6.8e-05,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 1280,
+          "W": 704,
+          "mean_abs": 4e-06,
+          "max_abs": 0.000184,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 1024,
+          "W": 1024,
+          "mean_abs": 2e-06,
+          "max_abs": 9.3e-05,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 768,
+          "W": 512,
+          "mean_abs": 0.0,
+          "max_abs": 0.00011,
+          "ok": true,
+          "note": ""
+        },
+        {
+          "H": 512,
+          "W": 288,
+          "mean_abs": NaN,
+          "max_abs": NaN,
+          "ok": false,
+          "note": "[ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Concat node. N"
+        }
+      ]
+    }
+  },
+  "dynamic_verified": {
+    "general": false,
+    "matting": false
+  },
+  "speed": [
+    {
+      "model": "general_PT_fp32",
+      "runtime": "PyTorch FP32 (cuda:0)",
+      "mean_ms": 757.7190639000719,
+      "p95_ms": 770.529562000047,
+      "peak_mem_mb": 2180.11376953125,
+      "size_mb": null,
+      "load_s": null,
+      "first_ms": null,
+      "fps": 1.3197503502853403,
+      "fits_RAM": null
+    },
+    {
+      "model": "matting_PT_fp32",
+      "runtime": "PyTorch FP32 (cuda:1)",
+      "mean_ms": 587.3084456999777,
+      "p95_ms": 588.8313732499569,
+      "peak_mem_mb": 2180.11376953125,
+      "size_mb": null,
+      "load_s": null,
+      "first_ms": null,
+      "fps": 1.7026828190903334,
+      "fits_RAM": null
+    },
+    {
+      "model": "matting_ONNX_int8",
+      "runtime": "ONNX Runtime CPU (2 threads, own process)",
+      "mean_ms": 9383.496284484863,
+      "p95_ms": 9805.990397930145,
+      "peak_mem_mb": 13532.265625,
+      "size_mb": 475.90424633026123,
+      "load_s": 5.5880513191223145,
+      "first_ms": 9651.92699432373,
+      "fps": 0.10657008535863646,
+      "fits_RAM": false
+    },
+    {
+      "model": "matting_ONNX_fp32",
+      "runtime": "ONNX Runtime CPU (2 threads, own process)",
+      "mean_ms": 11274.14470911026,
+      "p95_ms": 11606.657135486603,
+      "peak_mem_mb": 13532.265625,
+      "size_mb": 1586.3408498764038,
+      "load_s": 9.225549459457397,
+      "first_ms": 11840.477705001831,
+      "fps": 0.0886985244381273,
+      "fits_RAM": false
+    }
+  ],
+  "quality": {
+    "aim500|general_ONNX_int8": {
+      "IoU": 0.92792,
+      "Dice": 0.95355,
+      "maxF": 0.96262,
+      "meanF": 0.92612,
+      "BIoU": 0.84122,
+      "Sm": 0.90487,
+      "MAE": 0.0132,
+      "MSE": 0.00351,
+      "ms": 8116.12573,
+      "fid_MAD": 0.00056,
+      "fid_IoU": 0.99714
+    },
+    "aim500|general_PT_fp32": {
+      "IoU": 0.95238,
+      "Dice": 0.97107,
+      "maxF": 0.97679,
+      "meanF": 0.95419,
+      "BIoU": 0.87359,
+      "Sm": 0.93333,
+      "MAE": 0.01142,
+      "MSE": 0.00338,
+      "ms": 705.22848,
+      "fid_MAD": NaN,
+      "fid_IoU": NaN
+    },
+    "aim500|matting_ONNX_int8": {
+      "IoU": 0.94586,
+      "Dice": 0.96726,
+      "maxF": 0.97144,
+      "meanF": 0.9283,
+      "BIoU": 0.87007,
+      "Sm": 0.91698,
+      "MAE": 0.00964,
+      "MSE": 0.00205,
+      "ms": 8113.40783,
+      "fid_MAD": 0.00051,
+      "fid_IoU": 0.99602
+    },
+    "aim500|matting_PT_fp32": {
+      "IoU": 0.96174,
+      "Dice": 0.97718,
+      "maxF": 0.98012,
+      "meanF": 0.95592,
+      "BIoU": 0.89524,
+      "Sm": 0.93848,
+      "MAE": 0.00898,
+      "MSE": 0.00216,
+      "ms": 588.35408,
+      "fid_MAD": NaN,
+      "fid_IoU": NaN
+    },
+    "dis_te1|general_ONNX_int8": {
+      "IoU": 0.91627,
+      "Dice": 0.95545,
+      "maxF": 0.96576,
+      "meanF": 0.95441,
+      "BIoU": 0.87995,
+      "Sm": 0.96168,
+      "MAE": 0.00624,
+      "MSE": 0.00412,
+      "ms": 8082.02123,
+      "fid_MAD": 0.00027,
+      "fid_IoU": 0.99655
+    },
+    "dis_te1|general_PT_fp32": {
+      "IoU": 0.89167,
+      "Dice": 0.92628,
+      "maxF": 0.93533,
+      "meanF": 0.92217,
+      "BIoU": 0.85633,
+      "Sm": 0.93107,
+      "MAE": 0.00685,
+      "MSE": 0.00481,
+      "ms": 703.7024,
+      "fid_MAD": NaN,
+      "fid_IoU": NaN
+    },
+    "dis_te1|matting_ONNX_int8": {
+      "IoU": 0.34744,
+      "Dice": 0.41939,
+      "maxF": 0.67896,
+      "meanF": 0.48114,
+      "BIoU": 0.35002,
+      "Sm": 0.65644,
+      "MAE": 0.11361,
+      "MSE": 0.10158,
+      "ms": 8071.36324,
+      "fid_MAD": 0.00259,
+      "fid_IoU": 0.88627
+    },
+    "dis_te1|matting_PT_fp32": {
+      "IoU": 0.43095,
+      "Dice": 0.50629,
+      "maxF": 0.67963,
+      "meanF": 0.54905,
+      "BIoU": 0.41092,
+      "Sm": 0.68703,
+      "MAE": 0.09368,
+      "MSE": 0.08095,
+      "ms": 589.26784,
+      "fid_MAD": NaN,
+      "fid_IoU": NaN
+    },
+    "dis_vd|general_ONNX_int8": {
+      "IoU": 0.82964,
+      "Dice": 0.89576,
+      "maxF": 0.91876,
+      "meanF": 0.90199,
+      "BIoU": 0.75358,
+      "Sm": 0.88408,
+      "MAE": 0.04606,
+      "MSE": 0.03675,
+      "ms": 8043.74842,
+      "fid_MAD": 0.00582,
+      "fid_IoU": 0.9859
+    },
+    "dis_vd|general_PT_fp32": {
+      "IoU": 0.81476,
+      "Dice": 0.88272,
+      "maxF": 0.91507,
+      "meanF": 0.89444,
+      "BIoU": 0.75125,
+      "Sm": 0.87379,
+      "MAE": 0.05624,
+      "MSE": 0.05003,
+      "ms": 702.32711,
+      "fid_MAD": NaN,
+      "fid_IoU": NaN
+    },
+    "dis_vd|matting_ONNX_int8": {
+      "IoU": 0.66661,
+      "Dice": 0.73628,
+      "maxF": 0.86762,
+      "meanF": 0.75477,
+      "BIoU": 0.60537,
+      "Sm": 0.77605,
+      "MAE": 0.11374,
+      "MSE": 0.09244,
+      "ms": 8056.39133,
+      "fid_MAD": 0.0021,
+      "fid_IoU": 0.93455
+    },
+    "dis_vd|matting_PT_fp32": {
+      "IoU": 0.55134,
+      "Dice": 0.62768,
+      "maxF": 0.77294,
+      "meanF": 0.65856,
+      "BIoU": 0.48704,
+      "Sm": 0.7278,
+      "MAE": 0.11364,
+      "MSE": 0.09548,
+      "ms": 589.20695,
+      "fid_MAD": NaN,
+      "fid_IoU": NaN
+    }
+  },
+  "comparisons": {
+    "MATTING vs GENERAL|aim500": [
+      {
+        "metric": "IoU",
+        "delta": 0.00936,
+        "ci_lo": 0.00344,
+        "ci_hi": 0.01692,
+        "verdict": "BETTER"
+      },
+      {
+        "metric": "BIoU",
+        "delta": 0.02165,
+        "ci_lo": 0.01193,
+        "ci_hi": 0.03233,
+        "verdict": "BETTER"
+      },
+      {
+        "metric": "Sm",
+        "delta": 0.00515,
+        "ci_lo": 0.0015,
+        "ci_hi": 0.00975,
+        "verdict": "BETTER"
+      },
+      {
+        "metric": "MAE",
+        "delta": -0.00244,
+        "ci_lo": -0.00415,
+        "ci_hi": -0.0011,
+        "verdict": "BETTER"
+      }
+    ],
+    "MATTING vs GENERAL|dis_te1": [
+      {
+        "metric": "IoU",
+        "delta": -0.46072,
+        "ci_lo": -0.54877,
+        "ci_hi": -0.37223,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -0.44541,
+        "ci_lo": -0.52398,
+        "ci_hi": -0.36555,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "Sm",
+        "delta": -0.24404,
+        "ci_lo": -0.29592,
+        "ci_hi": -0.19405,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "MAE",
+        "delta": 0.08684,
+        "ci_lo": 0.05905,
+        "ci_hi": 0.11796,
+        "verdict": "WORSE"
+      }
+    ],
+    "MATTING vs GENERAL|dis_vd": [
+      {
+        "metric": "IoU",
+        "delta": -0.26341,
+        "ci_lo": -0.35087,
+        "ci_hi": -0.17644,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -0.26421,
+        "ci_lo": -0.34543,
+        "ci_hi": -0.18677,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "Sm",
+        "delta": -0.14598,
+        "ci_lo": -0.20198,
+        "ci_hi": -0.08859,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "MAE",
+        "delta": 0.0574,
+        "ci_lo": 0.02295,
+        "ci_hi": 0.0891,
+        "verdict": "WORSE"
+      }
+    ],
+    "EXPORT COST general|aim500": [
+      {
+        "metric": "IoU",
+        "delta": -5e-05,
+        "ci_lo": -0.00031,
+        "ci_hi": 0.0002,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -0.00056,
+        "ci_lo": -0.0012,
+        "ci_hi": 2e-05,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "Sm",
+        "delta": -4e-05,
+        "ci_lo": -0.0004,
+        "ci_hi": 0.00031,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "MAE",
+        "delta": 1e-05,
+        "ci_lo": -5e-05,
+        "ci_hi": 8e-05,
+        "verdict": "same (n.s.)"
+      }
+    ],
+    "EXPORT COST general|dis_te1": [
+      {
+        "metric": "IoU",
+        "delta": -0.00022,
+        "ci_lo": -0.00066,
+        "ci_hi": 0.00017,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -9e-05,
+        "ci_lo": -0.00086,
+        "ci_hi": 0.00064,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "Sm",
+        "delta": -4e-05,
+        "ci_lo": -0.00023,
+        "ci_hi": 0.00012,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "MAE",
+        "delta": 3e-05,
+        "ci_lo": -2e-05,
+        "ci_hi": 9e-05,
+        "verdict": "same (n.s.)"
+      }
+    ],
+    "EXPORT COST general|dis_vd": [
+      {
+        "metric": "IoU",
+        "delta": 0.0064,
+        "ci_lo": -0.0005,
+        "ci_hi": 0.01972,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "BIoU",
+        "delta": 0.00626,
+        "ci_lo": -0.0011,
+        "ci_hi": 0.01993,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "Sm",
+        "delta": 0.00503,
+        "ci_lo": -4e-05,
+        "ci_hi": 0.01504,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "MAE",
+        "delta": -0.00469,
+        "ci_lo": -0.01415,
+        "ci_hi": 9e-05,
+        "verdict": "same (n.s.)"
+      }
+    ],
+    "EXPORT COST matting|aim500": [
+      {
+        "metric": "IoU",
+        "delta": 5e-05,
+        "ci_lo": -0.0005,
+        "ci_hi": 0.0007,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -0.00058,
+        "ci_lo": -0.00185,
+        "ci_hi": 0.00046,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "Sm",
+        "delta": -0.00013,
+        "ci_lo": -0.00029,
+        "ci_hi": -0.0,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "MAE",
+        "delta": 7e-05,
+        "ci_lo": 1e-05,
+        "ci_hi": 0.00015,
+        "verdict": "WORSE"
+      }
+    ],
+    "EXPORT COST matting|dis_te1": [
+      {
+        "metric": "IoU",
+        "delta": -0.00037,
+        "ci_lo": -0.00682,
+        "ci_hi": 0.00853,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -0.00071,
+        "ci_lo": -0.00882,
+        "ci_hi": 0.00965,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "Sm",
+        "delta": -0.00305,
+        "ci_lo": -0.00738,
+        "ci_hi": 0.00148,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "MAE",
+        "delta": -0.00026,
+        "ci_lo": -0.00244,
+        "ci_hi": 0.00153,
+        "verdict": "same (n.s.)"
+      }
+    ],
+    "EXPORT COST matting|dis_vd": [
+      {
+        "metric": "IoU",
+        "delta": -0.00111,
+        "ci_lo": -0.00224,
+        "ci_hi": -0.00016,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "BIoU",
+        "delta": -0.00075,
+        "ci_lo": -0.00233,
+        "ci_hi": 0.001,
+        "verdict": "same (n.s.)"
+      },
+      {
+        "metric": "Sm",
+        "delta": -0.00089,
+        "ci_lo": -0.00178,
+        "ci_hi": -0.00017,
+        "verdict": "WORSE"
+      },
+      {
+        "metric": "MAE",
+        "delta": 0.00064,
+        "ci_lo": 0.0002,
+        "ci_hi": 0.00123,
+        "verdict": "WORSE"
+      }
+    ]
+  },
+  "deliverables": {
+    "general": {
+      "birefnet_general_swinL_1024x576_int8.onnx": {
+        "size_mb": 476,
+        "sha256": "9280cfb34b3e43d4"
+      }
+    },
+    "matting": {
+      "birefnet_matting_swinL_1024x576_int8.onnx": {
+        "size_mb": 476,
+        "sha256": "b22ffbc5de27a193"
+      },
+      "birefnet_matting_swinL_1024x576_fp32.onnx": {
+        "size_mb": 1586,
+        "sha256": "dae1d260a29ddd6b"
+      }
+    }
+  }
+}
